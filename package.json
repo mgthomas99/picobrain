@@ -1,0 +1,39 @@
+{
+  "name": "picofuck",
+  "version": "1.0.0",
+  "description": "Tiny Javascript brainfuck interpreter",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "^4.9.1"
+  },
+  "scripts": {
+    "test": "tape \"test/**/*.spec.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgthomas99/picofuck.git"
+  },
+  "keywords": [
+    "brainfuck",
+    "golfed",
+    "golf",
+    "interpreter",
+    "language",
+    "minified",
+    "minify",
+    "minimal",
+    "nano",
+    "pico",
+    "tiny"
+  ],
+  "author": {
+    "name": "George Thomas",
+    "url": "https://mgthomas99.github.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mgthomas99/picofuck/issues"
+  },
+  "homepage": "https://github.com/mgthomas99/picofuck#readme"
+}

@@ -1,0 +1,41 @@
+{
+  "name": "picofuck",
+  "description": "Pico-scale brainfuck interpreter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "authors": [
+    "George Thomas"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "brainfuck",
+    "golfed",
+    "golf",
+    "interpreter",
+    "language",
+    "minified",
+    "minify",
+    "minimal",
+    "nano",
+    "pico",
+    "tiny"
+  ],
+  "homepage": "https://github.com/mgthomas99/picofuck",
+  "ignore": [
+    ".vscode/",
+    "bower_components/",
+    "doc/",
+    "node_modules/",
+    "test/",
+    ".editorconfig",
+    ".eslintignore",
+    ".gitattributes",
+    ".gitignore",
+    ".jshintignore",
+    ".npmignore",
+    ".npmrc",
+    ".nvmrc",
+    "CHANGELOG.md",
+    "package.json"
+  ]
+}

@@ -1,0 +1,1 @@
+module.exports=(a,u,t=[0],c,p=0,s='')=>{b=[...a];n=0;for(i=0;i<b.length;i++){c=b[i];t[p+=c==">"?1:c=="<"?-1:0]=t[p]||0;t[p]+=c=='+'?1:(c=='-'?-1:0);if(c=='.')s+=String.fromCharCode(t[p]);if(c==',')t[p]=u().charCodeAt(0);if(c=='['&&!t[p])for(n=1;n>0;i++)n-=b[i]==']'?1:0;if(c==']'&&t[p])for(n=1;n>0;i--)n-=b[i]=='['?1:0;}return s}

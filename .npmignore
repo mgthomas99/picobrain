@@ -1,0 +1,11 @@
+.vscode/
+bower_components/
+doc/
+test/
+.editorconfig
+.eslintignore
+.gitattributes
+.jshintignore
+bower.json
+CHANGELOG.md
+index.spec.js
