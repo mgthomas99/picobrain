@@ -1,5 +1,5 @@
 {
-  "name": "picofuck",
+  "name": "picobrain",
   "version": "1.0.0",
   "description": "Tiny Javascript brainfuck interpreter",
   "main": "index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mgthomas99/picofuck.git"
+    "url": "git+https://github.com/mgthomas99/picobrain.git"
   },
   "keywords": [
     "brainfuck",
@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mgthomas99/picofuck/issues"
+    "url": "https://github.com/mgthomas99/picobrain/issues"
   },
-  "homepage": "https://github.com/mgthomas99/picofuck#readme"
+  "homepage": "https://github.com/mgthomas99/picobrain#readme"
 }

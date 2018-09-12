@@ -1,5 +1,5 @@
 {
-  "name": "picofuck",
+  "name": "picobrain",
   "description": "Pico-scale brainfuck interpreter",
   "version": "1.0.0",
   "main": "index.js",
@@ -20,7 +20,7 @@
     "pico",
     "tiny"
   ],
-  "homepage": "https://github.com/mgthomas99/picofuck",
+  "homepage": "https://github.com/mgthomas99/picobrain",
   "ignore": [
     ".vscode/",
     "bower_components/",
