@@ -1,4 +1,10 @@
 
+#### 1.1.0
+
+- Moved function arguments to for-loop initialisation. This stops developers
+from modifying the interpreter's initial values (such as the tape).
+- Removed tape index 0 initialisation value.
+
 #### 1.0.1
 
 > 292 Bytes.
