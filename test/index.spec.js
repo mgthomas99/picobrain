@@ -20,3 +20,13 @@ test("Cell increment", function (t) {
   }
   t.end();
 });
+
+test("Simple Loop", function (t) {
+  try {
+    t.assert(bf("+++[>++++++++++<-]>+++.") === "!");
+    t.pass();
+  } catch (ex) {
+    t.fail();
+  }
+  t.end();
+});

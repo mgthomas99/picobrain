@@ -1,6 +1,6 @@
 {
   "name": "picobrain",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tiny Javascript brainfuck interpreter",
   "main": "index.js",
   "dependencies": {},
