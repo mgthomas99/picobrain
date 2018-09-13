@@ -40,6 +40,19 @@ var tape = new Uint8Array(20);
 bf("-", tape);
 ```
 
+For the input command to work (`,`), you must provide a function which is to be
+invoked on input:
+
+```js
+function input() {
+  return window.prompt();
+}
+
+bf(",.", [], function() {
+  return window.prompt();
+});
+```
+
 ## Why
 
 Why not?
