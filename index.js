@@ -1,1 +1,1 @@
-module.exports=(a,u)=>{b=[...a];for(t=[],i=0,c=1,n=0,p=0,s='';c;i+=n||1){c=b[i];if(c=='[')n=n?n+1:+!t[p];if(c==']')n=n?n+1:-!!t[p];if(n)continue;t[p+=c==">"?1:c=="<"?-1:0]=t[p]||0;t[p]+=c=='+'?1:(c=='-'?-1:0);if(c=='.')s+=String.fromCharCode(t[p]);if(c==',')t[p]=u().charCodeAt(0);}return s}
+module.exports=(a,u)=>{for(t=[i=n=p=0],c=1,s='';c;i+=n||1){c=a[i];if(n+=c=="["?n?1:!t[p]:c=="]"?n?1:-!!t[p]:0)continue;t[p+=c==">"?1:c=="<"?-1:0]=(t[p]||0)+(c=='+'?1:c=='-'?-1:0);c=='.'?s+=String.fromCharCode(t[p]):c==','?t[p]=u().charCodeAt(0):0}return s}

@@ -1,9 +1,36 @@
 
 #### 1.1.0
 
-- Moved function arguments to for-loop initialisation. This stops developers
-from modifying the interpreter's initial values (such as the tape).
-- Removed tape index 0 initialisation value.
+> 256 Bytes.
+
+* Moved function arguments to for-loop initialisation. This stops developers
+  from modifying the interpreter's initial values (such as the tape).
+* Removed tape index 0 initialisation value.
+* Transformed bracket for-loops into a series of nested ternary statements.
+* Re-structured for-loop variable initialisations.
+* Re-structured input and output commands into an inline ternary expression.
+* Realised I don't need to split the input code into its individual characters.
+  `a[i]` is the same as `[...a][i]`, if `a` is a `string`. 🤦
+
+```js
+/**
+ * @param   {string}        a
+ *                          The input brainfuck code.
+ * @param   {() => number}  u
+ *                          The user input function.
+ * @return  {string}        The printed characters.
+ */
+// Variable initialisation has been moved from the function arguments to the
+// for-loop initialiser.
+module.exports = (a, u) => {
+    for (t = [i=n=p=0], c = 1, s = ''; c; i += n || 1){
+        c = a[i]; // <- No longer expanding `a` every loop!
+        // Holy mother of ternary statements...
+        if (n += c=="["?n?1:!t[p]:c=="]"?n?1:-!!t[p]:0) continue;
+        t[p += c==">"?1:c=="<"?-1:0] = (t[p] || 0) + (c=='+'?1:c=='-'?-1:0);
+        c == '.' ? s += String.fromCharCode(t[p]) : c==','?t[p]=u().charCodeAt(0):0
+    }return s}
+```
 
 #### 1.0.1
 
@@ -34,23 +61,23 @@ removing the need for two nested loops.
  *                          The return value.
  * @return  {string}        The printed characters.
  */
-module.exports=(a,u,t=[0],c=1,p=0,s='')=>{
+module.exports = (a, u, t=[0], c=1, p=0, s='') => {
     b=[...a];
 
     // Notice how we are now initialising `n` in the character iteration
     // for-loop and using it to determine how to modify `i`, rather than
     // specifically waiting until we hit a bracket and explicitly skipping
     // characters using a nested loop.
-    for(i=0,n=0;c;i+=n||1){
-        c=b[i];
-        if(c=='[')n=n?n+1:+!t[p]
-        if(c==']')n=n?n+1:-!!t[p]
-        if(n)continue;
-        
-        t[p+=c==">"?1:c=="<"?-1:0]=t[p]||0;
-        t[p]+=c=='+'?1:(c=='-'?-1:0);
-        if(c=='.')s+=String.fromCharCode(t[p]);
-        if(c==',')t[p]=u().charCodeAt(0);
+    for (i = 0, n = 0; c; i += n || 1){
+        c = b[i];
+        if (c == '[') n = n ? n + 1 : +!t[p]
+        if (c == ']') n = n ? n + 1 : -!!t[p]
+        if (n) continue;
+
+        t[p += c==">"?1:c=="<"?-1:0] = t[p] || 0;
+        t[p] += c == '+' ? 1 : (c == '-' ? -1 : 0);
+        if (c == '.') s += String.fromCharCode(t[p]);
+        if (c == ',') t[p] = u().charCodeAt(0);
     }
     return s
 }
@@ -85,7 +112,7 @@ module.exports = (a, u, t=[0], c, p=0, s='') => {
         c = b[i];
         t[p+=c==">"?1:c=="<"?-1:0]=t[p]||0;
         t[p]+=c=='+'?1:(c=='-'?-1:0);
-        
+
         if (c == '.') s += String.fromCharCode(t[p]);
         if (c == ',') t[p] = u().charCodeAt(0);
         if (c == '[' && !t[p])
