@@ -1,7 +1,7 @@
 {
   "name": "picobrain",
   "description": "Pico-scale brainfuck interpreter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "authors": [
     "George Thomas"
