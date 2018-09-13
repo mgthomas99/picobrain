@@ -1,6 +1,58 @@
 
 #### 1.1.0
 
+> 245 Bytes.
+
+* Function is now a generator that yields on every character print (".").
+* Initial tape type and contents can be modified by providing it as the second
+  argument to the function. By default, the tape is an empty array, which is
+  what it was previously.
+* Re-structured the for-loop contents into one large expression.
+* Updated tests.
+
+```js
+/**
+ * @param   {string}            a
+ *                              The input brainfuck code.
+ * @param   {ArrayLike<number>} t
+ *                              The tape. An empty array by default.
+ * @param   {() => number}      u
+ *                              The user input function.
+ * @return  {string}            The printed characters.
+ */
+module.exports = function*(a, t=[], u) {
+    for (i=n=p=0, c=1; c; i+=n||1)
+        (
+            n += (c = a[i]) == "["
+                ? n
+                    ? 1
+                    : !t[p]
+                : c == "]"
+                    ? n
+                        ? 1
+                        : -!!t[p]
+                    :0
+        ) || (
+            t[p += c == ">" ? 1 : c=="<"?-1:0] =
+                (t[p] || 0)
+                +
+                (c == '+'
+                    ? 1
+                    : c == '-'
+                        ? -1
+                        : 0
+                ),
+            c == '.'
+                ? yield String.fromCharCode(t[p])
+                : c == ','
+                    ? t[p] = u().charCodeAt(0)
+                    : 0
+        )
+}
+```
+
+#### 1.0.2
+
 > 256 Bytes.
 
 * Moved function arguments to for-loop initialisation. This stops developers
