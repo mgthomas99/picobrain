@@ -1,6 +1,7 @@
 .vscode/
 bower_components/
 doc/
+example/
 test/
 .editorconfig
 .eslintignore
