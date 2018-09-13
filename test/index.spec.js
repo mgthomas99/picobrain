@@ -13,7 +13,7 @@ test("bf()", function (t) {
 
 test("Cell increment", function (t) {
   try {
-    t.assert(bf("+++++++++++++++++++++++++++++++++.") === "!");
+    t.assert(bf("+++++++++++++++++++++++++++++++++.").next().value === "!");
     t.pass();
   } catch (ex) {
     t.fail();
@@ -23,7 +23,7 @@ test("Cell increment", function (t) {
 
 test("Simple Loop", function (t) {
   try {
-    t.assert(bf("+++[>++++++++++<-]>+++.") === "!");
+    t.assert(bf("+++[>++++++++++<-]>+++.").next().value === "!");
     t.pass();
   } catch (ex) {
     t.fail();
