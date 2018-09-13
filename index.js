@@ -1,1 +1,1 @@
-module.exports=(a,u)=>{for(t=[i=n=p=0],c=1,s='';c;i+=n||1){c=a[i];if(n+=c=="["?n?1:!t[p]:c=="]"?n?1:-!!t[p]:0)continue;t[p+=c==">"?1:c=="<"?-1:0]=(t[p]||0)+(c=='+'?1:c=='-'?-1:0);c=='.'?s+=String.fromCharCode(t[p]):c==','?t[p]=u().charCodeAt(0):0}return s}
+module.exports=function*(a,t=[],u){for(i=n=p=0,c=1;c;i+=n||1)(n+=(c=a[i])=="["?n?1:!t[p]:c=="]"?n?1:-!!t[p]:0)||(t[p+=c==">"?1:c=="<"?-1:0]=(t[p]||0)+(c=='+'?1:c=='-'?-1:0),c=='.'?yield String.fromCharCode(t[p]):c==','?t[p]=u().charCodeAt(0):0)}
