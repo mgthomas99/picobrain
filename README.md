@@ -16,14 +16,28 @@
 
 > Perhaps the smallest Javascript brainfuck interpreter
 
-`picobrain` is a 292-byte Javascript brainfuck interpreter.
+`picobrain` is a 245-byte Javascript brainfuck interpreter.
 
 ## Usage
+
+The library exports a generator function which yields on output.
 
 ```js
 var bf = require("picobrain")
 
-bf("+++[>++++++++++<-]>+++."); // Returns "!"
+bf("+++[>++++++++++<-]>+++."); // Yields "!"
+```
+
+You can also provide your own tape.
+
+```js
+// Here, we specify that we want the interpreter to use a new `Uint8Array` as
+// the tape. This will set the tape size to 20 and cause cell values to wrap on
+// overflow/underflow.
+// If no tape is provided, the interpreter will just use a new empty unbounded
+// number array.
+var tape = new Uint8Array(20);
+bf("-", tape);
 ```
 
 ## Why
@@ -32,7 +46,7 @@ Why not?
 
 This library is also an open [codegolf](https://en.wikipedia.org/wiki/Code_golf)
 challenge. Please feel free to submit pull requests if you're able to make the
-code even shorter!
+code even shorter, or fork the project and make your own API!
 
 ## Install, Build & Test
 
@@ -61,7 +75,7 @@ The picobrain library can be imported via [unpkg](https://unpkg.com/) as shown
 below:
 
 ```html
-<script type="application/javascript">var module={};</script>
+<script type="application/javascript">var module= {};</script>
 <script src="https://unpkg.com/picobrain/index.js"></script>
 <script type="application/javascript">
   var bf = module.exports;
