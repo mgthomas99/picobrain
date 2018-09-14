@@ -1,6 +1,56 @@
 
 # Changelog
 
+#### 2.0.2
+
+> 250 Bytes.
+
+* Removed optional argument to `String.prototype.charCodeAt()`.
+* Removed redundant case from for-loop increment ternary (credit goes to
+  [@rdebath](https://github.com/rdebath) for finding that!)
+
+```js
+/**
+ * @param   {string}            a
+ *                              The input brainfuck code.
+ * @param   {ArrayLike<number>} t
+ *                              The tape. An empty array by default.
+ * @param   {() => number}      u
+ *                              The user input function.
+ * @return  {string}            The printed characters.
+ */
+module.exports = function*(a, t=[], u) {
+    for (i=n=p=0, c=1; c; i+=n>=0?1:-1)
+                          // ^^^^^^^^^ Much shorter!
+        (
+            n += (c = a[i]) == "["
+                ? n
+                    ? 1
+                    : !t[p]
+                : c == "]"
+                    ? n
+                        ? -1
+                        : -!!t[p]
+                    : 0
+        ) || (
+            t[p += c == ">" ? 1 : c=="<"?-1:0] =
+                (t[p] || 0)
+                +
+                (c == '+'
+                    ? 1
+                    : c == '-'
+                        ? -1
+                        : 0
+                ),
+            c == '.'
+                ? yield String.fromCharCode(t[p])
+                : c == ','
+                    ? t[p] = u().charCodeAt() // <- `0` is not necessary.
+                    : 0
+        )
+}
+```
+
 #### 2.0.1
 
 > 256 Bytes.
@@ -8,7 +58,8 @@
 * Fixed nested loop issues!
 
 This version just fixes the nested loop bug. It is a major version as I should
-have made the previous version a major version.
+have made the previous version a major version. The bug was found by
+[@rdebath](https://github.com/rdebath).
 
 ```js
 /**
