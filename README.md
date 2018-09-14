@@ -16,7 +16,7 @@
 
 > Perhaps the smallest Javascript brainfuck interpreter
 
-`picobrain` is a 256-byte Javascript brainfuck interpreter.
+`picobrain` is a 250-byte Javascript brainfuck interpreter.
 
 ## Usage
 
