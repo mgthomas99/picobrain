@@ -1,6 +1,10 @@
 var test = require("tape");
 var bf = require("../");
 
+function iteratorToString(iter) {
+  return Array.from(iter).join("");
+}
+
 test("bf()", function (t) {
   try {
     t.assert(typeof bf === "function");
@@ -13,7 +17,8 @@ test("bf()", function (t) {
 
 test("Cell increment", function (t) {
   try {
-    t.assert(bf("+++++++++++++++++++++++++++++++++.").next().value === "!");
+    var r = bf("+++++++++++++++++++++++++++++++++.");
+    t.assert(iteratorToString(r) === "!");
     t.pass();
   } catch (ex) {
     t.fail();
@@ -23,7 +28,19 @@ test("Cell increment", function (t) {
 
 test("Simple Loop", function (t) {
   try {
-    t.assert(bf("+++[>++++++++++<-]>+++.").next().value === "!");
+    var r = bf("+++[>++++++++++<-]>+++.");
+    t.assert(iteratorToString(r) === "!");
+    t.pass();
+  } catch (ex) {
+    t.fail();
+  }
+  t.end();
+});
+
+test("Nested loop", function (t) {
+  try {
+    var r = bf("+++[>+++++[>++<-]<-]>>+++.");
+    t.assert(iteratorToString(r) === "!");
     t.pass();
   } catch (ex) {
     t.fail();
