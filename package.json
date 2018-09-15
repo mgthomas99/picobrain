@@ -31,6 +31,12 @@
     "name": "George Thomas",
     "url": "https://mgthomas99.github.io"
   },
+  "contributors": [
+    {
+      "name": "rdebath",
+      "url": "https://github.com/rdebath"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mgthomas99/picobrain/issues"
